@@ -5,10 +5,13 @@ use crossterm::cursor;
 use crossterm::event::{read, Event, KeyCode, KeyEvent, KeyEventKind, KeyModifiers};
 use crossterm::style::Print;
 use crossterm::terminal::{disable_raw_mode, enable_raw_mode, Clear, ClearType};
+
 use std::fmt::Display;
 use std::io::stdout;
 use std::mem;
 use std::ops::Add;
+use std::thread;
+use std::time::Duration;
 
 use itertools::Itertools;
 
@@ -241,6 +244,7 @@ fn main() {
     .unwrap();
 
     loop {
+        thread::sleep(Duration::from_millis(50));
         //going to top left corner
         execute!(stdout, cursor::MoveTo(0, 0)).unwrap();
 
